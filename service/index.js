@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Serve up the applications static content
-app.use(express.static('../public'));
+app.use(express.static('../dist'));
 
 // Router for service endpoints
 const apiRouter = express.Router();
