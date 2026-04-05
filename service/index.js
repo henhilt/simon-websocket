@@ -1,3 +1,4 @@
+require('node:dns/promises').setServers(['8.8.8.8', '1.1.1.1']);
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
