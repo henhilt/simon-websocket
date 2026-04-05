@@ -138,3 +138,8 @@ const httpService = app.listen(port, () => {
 });
 
 peerProxy(httpService);
+
+
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: '../dist' });
+});
