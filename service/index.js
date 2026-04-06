@@ -18,8 +18,7 @@ app.use(express.json());
 // Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
 
-// Serve up the applications static content
-app.use(express.static('../dist'));
+
 
 // Router for service endpoints
 const apiRouter = express.Router();
@@ -135,13 +134,15 @@ function setAuthCookie(res, authToken) {
   });
 }
 
+// Serve up the applications static content
+app.use(express.static('./public'));
+
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: './public' });
+});
+
 const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
 peerProxy(httpService);
-
-
-app.use((_req, res) => {
-  res.sendFile('index.html', { root: '../dist' });
-});
